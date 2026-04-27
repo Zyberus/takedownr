@@ -43,7 +43,7 @@ export function AnimatedHero() {
             
             <motion.h1 
               variants={fadeUp}
-              className="font-serif text-5xl font-medium tracking-tight text-[var(--color-ink)] sm:text-6xl lg:text-7xl lg:leading-[1.05]"
+              className="max-w-3xl font-serif text-4xl font-normal tracking-tight text-[var(--color-ink)] sm:text-5xl lg:text-6xl lg:leading-[1.06]"
             >
               Report &amp; remove <br className="hidden sm:block" /> 
               <span className="text-[var(--color-muted)] italic">Instagram content.</span>
@@ -51,12 +51,12 @@ export function AnimatedHero() {
             
             <motion.p 
               variants={fadeUp}
-              className="mt-6 max-w-xl text-base leading-relaxed text-[var(--color-muted)] sm:text-lg"
+              className="mt-5 max-w-lg text-[0.98rem] leading-7 text-[var(--color-muted)] sm:text-base"
             >
               Takedownr is a professional Instagram takedown service. We help you report fake Instagram accounts, remove photos and reels posted without consent, and delete impersonation profiles — fast, confidentially, with a full refund guarantee.
             </motion.p>
             
-            <motion.div variants={fadeUp} className="mt-8 flex flex-wrap items-center gap-4 sm:gap-6">
+            <motion.div variants={fadeUp} className="mt-7 flex flex-wrap items-center gap-4 sm:gap-5">
               <Link href="/contact" className="button-primary">
                 Start a takedown request <ArrowUpRight size={18} strokeWidth={2} />
               </Link>

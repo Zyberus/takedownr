@@ -59,14 +59,14 @@ export default function Home() {
       <AnimatedHero />
 
       {/* Services Section — keyword-rich for "instagram takedown service", "remove instagram content" */}
-      <section id="services" className="editorial-section">
+      <section id="services" className="editorial-section home-editorial-section">
         <div className="section-heading reveal">
           <p className="eyebrow">Instagram Takedown Services</p>
-          <h2 className="section-title">
+          <h2 className="section-title home-section-title">
             Professional Instagram content removal. Minimal process, heavy
             pressure where it counts.
           </h2>
-          <p className="section-copy">
+          <p className="section-copy home-section-copy">
             Built for the most common Instagram problems people search for help
             with: photos and reels posted without consent, fake accounts
             impersonating you, and old Instagram accounts you need deleted.
@@ -88,26 +88,26 @@ export default function Home() {
       </section>
 
       {/* How It Works Section — targets "how to report instagram account", "how to delete instagram account" */}
-      <section className="story-section">
-        <div className="story-layout">
-          <div className="story-panel reveal">
+      <section className="story-section story-scroll-section">
+        <div className="story-layout story-scroll-layout">
+          <div className="story-panel story-scroll-panel">
             <p className="eyebrow">How to remove Instagram content</p>
-            <h2 className="section-title">
+            <h2 className="section-title home-section-title story-scroll-title">
               A clear process to report, remove, and delete Instagram content
               and accounts — even when it feels impossible.
             </h2>
-            <p className="section-copy">
+            <p className="section-copy home-section-copy">
               Whether you need to report a fake Instagram account, remove
               unauthorized photos, or get an impersonation profile deleted, our
               structured process turns chaos into a calm, trackable case.
             </p>
           </div>
 
-          <div className="steps-stack">
-            {steps.map((step, index) => (
+          <div className="steps-stack story-scroll-steps">
+            {steps.map((step) => (
               <article
                 key={step.index}
-                className={`step-card reveal reveal-delay-${(index % 3) + 1}`}
+                className="step-card story-scroll-card"
               >
                 <span>{step.index}</span>
                 <h3>{step.title}</h3>
@@ -122,11 +122,11 @@ export default function Home() {
       <section className="cta-section">
         <div className="cta-panel reveal">
           <p className="eyebrow">Report Instagram Content Now</p>
-          <h2 className="section-title">
+          <h2 className="section-title home-section-title">
             If someone posted your photos without consent or is impersonating
             you on Instagram, start the takedown now.
           </h2>
-          <p className="section-copy">
+          <p className="section-copy home-section-copy">
             Private intake, organized evidence, and a focused Instagram takedown
             path from the first message. Free case review, full refund if
             removal fails.
