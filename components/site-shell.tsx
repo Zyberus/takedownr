@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState, type ReactNode } from "react";
 import { usePathname } from "next/navigation";
 import {
@@ -73,9 +74,15 @@ export function SiteShell({
               transition: "box-shadow 320ms cubic-bezier(0.22, 1, 0.36, 1)",
             }}
           >
-            <Link href="/" className="brand-mark">
-              <span className="brand-mark-dot" />
-              Takedownr
+            <Link href="/" className="flex items-center gap-2">
+              <Image 
+                src="/takedownr_logo.png" 
+                alt="Takedownr Logo" 
+                width={140} 
+                height={40} 
+                className="h-8 w-auto object-contain"
+                priority
+              />
             </Link>
 
             <motion.nav
@@ -142,10 +149,15 @@ export function SiteShell({
               <Link
                 href="/"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="brand-mark"
+                className="flex items-center gap-2"
               >
-                <span className="brand-mark-dot" />
-                Takedownr
+                <Image 
+                  src="/takedownr_logo.png" 
+                  alt="Takedownr Logo" 
+                  width={140} 
+                  height={40} 
+                  className="h-8 w-auto object-contain"
+                />
               </Link>
               <button
                 type="button"

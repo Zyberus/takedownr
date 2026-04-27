@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 
 export function SiteFooter() {
@@ -8,9 +9,14 @@ export function SiteFooter() {
     <footer className="mt-auto border-t border-[var(--color-line)] bg-[var(--color-surface)] px-4 py-8 sm:px-6 sm:py-12 md:py-16">
       <div className="mx-auto flex max-w-6xl flex-col gap-12 md:flex-row md:items-start md:justify-between">
         <div className="flex max-w-xs flex-col gap-4">
-          <Link href="/" className="brand-mark md:text-xl">
-            <span className="brand-mark-dot" />
-            Takedownr
+          <Link href="/" className="flex items-center gap-2">
+            <Image 
+              src="/takedownr_logo.png" 
+              alt="Takedownr Logo" 
+              width={160} 
+              height={46} 
+              className="h-9 w-auto object-contain"
+            />
           </Link>
           <p className="text-sm leading-relaxed text-[var(--color-muted)]">
             Professional Instagram takedown service. Report fake accounts, remove unauthorized photos & reels, delete impersonation profiles. Confidential, fast, full refund guarantee.
