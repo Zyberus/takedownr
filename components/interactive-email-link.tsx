@@ -25,7 +25,7 @@ export function InteractiveEmailLink() {
 
   const getMailtoLink = (caseName: string) => {
     const subject = encodeURIComponent("New Takedown Request: [Your Name/Entity]");
-    const bodyText = `Hello Takedownrr Team,
+    const bodyText = `Hello Takedownr Team,
 
 I would like to submit a takedown request. Please find my details below:
 

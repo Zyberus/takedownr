@@ -80,10 +80,10 @@ type CaseType = {
 const caseTypes: CaseType[] = [
   {
     id: "content",
-    label: "Reel or photo posted without consent",
-    short: "Non-consensual content",
+    label: "Instagram reel or photo posted without consent",
+    short: "Non-consensual Instagram content",
     description:
-      "Removal pathway for reels, posts, or photos uploaded without your permission — built around the platform's unauthorized-content policy.",
+      "Professional Instagram content removal pathway for reels, posts, or photos uploaded without your permission — built around Instagram's unauthorized-content policy for maximum takedown success.",
     icon: ImageOff,
     plans: [
       {
@@ -125,10 +125,10 @@ const caseTypes: CaseType[] = [
   },
   {
     id: "impersonator",
-    label: "Delete an impersonating account",
-    short: "Impersonator account",
+    label: "Delete a fake Instagram impersonation account",
+    short: "Instagram impersonator",
     description:
-      "Identity-and-harm packet engineered to support deletion of accounts pretending to be you — the cleanest path to enforcement.",
+      "Identity-and-harm packet engineered to get fake Instagram accounts reported and deleted — the cleanest path to Instagram impersonation enforcement.",
     icon: UserX,
     plans: [
       {
@@ -170,10 +170,10 @@ const caseTypes: CaseType[] = [
   },
   {
     id: "account",
-    label: "Delete an old account you no longer access",
-    short: "Old account",
+    label: "Delete an old Instagram account you can't access",
+    short: "Old Instagram account",
     description:
-      "For accounts you no longer have access to — old logins holding your photos, videos, or identity. We assemble the ownership and deletion request.",
+      "For Instagram accounts you no longer have access to — old logins holding your photos, videos, or identity. We assemble the ownership and Instagram account deletion request.",
     icon: KeyRound,
     plans: [
       {
@@ -218,27 +218,27 @@ const caseTypes: CaseType[] = [
 const faqs = [
   {
     q: "How do I know which case type to pick?",
-    a: "If something was posted without your permission, choose Non-consensual content. If a profile is pretending to be you, choose Impersonator account. If you're locked out of an old profile that still holds your photos or videos, choose Old account. Not sure? Start a free review and we'll route it correctly.",
+    a: "If Instagram photos or reels were posted without your permission, choose Non-consensual Instagram content. If a fake Instagram profile is pretending to be you, choose Instagram impersonator. If you're locked out of an old Instagram profile that still holds your photos or videos, choose Old Instagram account. Not sure? Start a free review and we'll route it correctly.",
   },
   {
     q: "What's the difference between Standard and Priority?",
-    a: "Standard is the right choice for most cases — full packet, platform submission, and 48-hour status updates. Priority is for situations that are spreading, escalating, or time-sensitive: same-day intake, 24-hour status updates, and dedicated escalation prep.",
+    a: "Standard is the right choice for most Instagram takedown cases — full packet, Instagram platform submission, and 48-hour status updates. Priority is for Instagram cases that are spreading, escalating, or time-sensitive: same-day intake, 24-hour status updates, and dedicated Instagram escalation prep.",
   },
   {
     q: "How quickly do you respond after intake?",
-    a: "Free reviews are answered within 24 hours. Standard cases enter the work queue within one business day; priority cases are handled the same day, including evenings and weekends when needed.",
+    a: "Free Instagram case reviews are answered within 24 hours. Standard Instagram takedown cases enter the work queue within one business day; priority cases are handled the same day, including evenings and weekends when needed.",
   },
   {
     q: "What if the takedown doesn't go through?",
-    a: "Full refund. Every cent. We only get paid when the case moves forward, and if a submission ultimately fails to result in removal, you don't pay for the work.",
+    a: "Full refund. Every cent. We only get paid when your Instagram case moves forward, and if a submission ultimately fails to result in Instagram content or account removal, you don't pay for the work.",
   },
   {
     q: "Can I run multiple cases at once?",
-    a: "Yes. Each case is billed separately, but we coordinate them in one workspace so evidence, identity proof, and platform context are reused — no duplicate intake.",
+    a: "Yes. Each Instagram takedown case is billed separately, but we coordinate them in one workspace so evidence, identity proof, and Instagram platform context are reused — no duplicate intake.",
   },
   {
     q: "Is my evidence kept private?",
-    a: "Yes. Intake, evidence, and case context are stored in a restricted-access workspace and shared only with the platform's enforcement channel during submission.",
+    a: "Yes. Instagram intake, evidence, and case context are stored in a restricted-access workspace and shared only with Instagram's enforcement channel during submission. Everything is encrypted and confidential.",
   },
 ];
 

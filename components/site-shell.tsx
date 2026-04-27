@@ -75,7 +75,7 @@ export function SiteShell({
           >
             <Link href="/" className="brand-mark">
               <span className="brand-mark-dot" />
-              Takedownrr
+              Takedownr
             </Link>
 
             <motion.nav
@@ -145,7 +145,7 @@ export function SiteShell({
                 className="brand-mark"
               >
                 <span className="brand-mark-dot" />
-                Takedownrr
+                Takedownr
               </Link>
               <button
                 type="button"

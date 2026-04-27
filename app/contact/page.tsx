@@ -24,8 +24,8 @@ const fadeUp = {
 };
 
 const checklistItems = [
-  { label: "Profile or post link", icon: Link2 },
-  { label: "Screenshots if available", icon: Image },
+  { label: "Instagram profile or post link", icon: Link2 },
+  { label: "Screenshots of the content or fake account", icon: Image },
   { label: "What happened, in your words", icon: MessageSquareText },
   { label: "Identity or ownership proof", icon: BadgeCheck },
 ];
@@ -65,12 +65,14 @@ export default function ContactPage() {
             </motion.p>
 
             <motion.h1 variants={fadeUp} className="contact-hero-title">
-              Open a private, confidential takedown request.
+              Open a confidential Instagram takedown request.
             </motion.h1>
 
             <motion.div variants={fadeUp} className="contact-hero-desc">
-              Send the essentials once. Your case begins immediately — calm process, focused
-              pressure where it counts. Alternatively, you can email us directly at{" "}
+              Report a fake Instagram account, request removal of unauthorized photos or reels,
+              or get an impersonation profile deleted. Send the essentials once — your Instagram
+              takedown case begins immediately with calm process and focused pressure where it
+              counts. Alternatively, you can email us directly at{" "}
               <InteractiveEmailLink />.
             </motion.div>
 
@@ -126,8 +128,8 @@ export default function ContactPage() {
             className="contact-form-panel"
           >
             <div className="contact-form-header-compact">
-              <p className="panel-kicker">Confidential intake form</p>
-              <h2>Your case details</h2>
+              <p className="panel-kicker">Confidential Instagram takedown intake</p>
+              <h2>Your Instagram case details</h2>
             </div>
             <ContactForm />
           </motion.div>

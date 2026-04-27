@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
 export function AnimatedHero() {
-  const ease = [0.22, 1, 0.36, 1];
+  const ease = [0.22, 1, 0.36, 1] as const;
   
   const stagger = {
     hidden: {},
@@ -24,7 +24,7 @@ export function AnimatedHero() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-8 lg:items-center">
           
-          {/* Left Column - Main Copy */}
+          {/* Left Column - Main Copy — targets "instagram takedown", "report instagram account", "remove instagram content" */}
           <motion.div 
             className="lg:col-span-7 flex flex-col items-start"
             initial="hidden"
@@ -45,20 +45,20 @@ export function AnimatedHero() {
               variants={fadeUp}
               className="font-serif text-5xl font-medium tracking-tight text-[var(--color-ink)] sm:text-6xl lg:text-7xl lg:leading-[1.05]"
             >
-              Take back control of <br className="hidden sm:block" /> 
-              <span className="text-[var(--color-muted)] italic">your image.</span>
+              Report &amp; remove <br className="hidden sm:block" /> 
+              <span className="text-[var(--color-muted)] italic">Instagram content.</span>
             </motion.h1>
             
             <motion.p 
               variants={fadeUp}
               className="mt-6 max-w-xl text-base leading-relaxed text-[var(--color-muted)] sm:text-lg"
             >
-              Fast, confidential takedowns for unauthorized content and impersonation accounts. We handle the heavy lifting quietly, methodically, and effectively.
+              Takedownr is a professional Instagram takedown service. We help you report fake Instagram accounts, remove photos and reels posted without consent, and delete impersonation profiles — fast, confidentially, with a full refund guarantee.
             </motion.p>
             
             <motion.div variants={fadeUp} className="mt-8 flex flex-wrap items-center gap-4 sm:gap-6">
               <Link href="/contact" className="button-primary">
-                Start a request <ArrowUpRight size={18} strokeWidth={2} />
+                Start a takedown request <ArrowUpRight size={18} strokeWidth={2} />
               </Link>
               <span className="text-sm font-medium text-[var(--color-ink)]">
                 Results guaranteed or 100% refund.
@@ -66,7 +66,7 @@ export function AnimatedHero() {
             </motion.div>
           </motion.div>
 
-          {/* Right Column - Minimal Editorial Graphic */}
+          {/* Right Column - Stats */}
           <motion.div 
             className="lg:col-span-4 lg:col-start-9"
             initial={{ opacity: 0, x: 20 }}
@@ -88,20 +88,20 @@ export function AnimatedHero() {
               <div className="flex flex-col gap-12">
                 <div>
                   <div className="text-3xl font-bold text-[var(--color-ink)] sm:text-4xl">98%</div>
-                  <div className="mt-2 text-sm font-medium text-[var(--color-ink)]">Platform Success Rate</div>
-                  <div className="mt-1 text-xs text-[var(--color-muted)]">On all accepted clear-cut policy violations.</div>
+                  <div className="mt-2 text-sm font-medium text-[var(--color-ink)]">Instagram Removal Success Rate</div>
+                  <div className="mt-1 text-xs text-[var(--color-muted)]">On all accepted Instagram policy violations and takedown cases.</div>
                 </div>
                 
                 <div>
                   <div className="text-3xl font-bold text-[var(--color-ink)] sm:text-4xl">&lt; 24h</div>
-                  <div className="mt-2 text-sm font-medium text-[var(--color-ink)]">Initial Escalation</div>
-                  <div className="mt-1 text-xs text-[var(--color-muted)]">Cases are vetted, packaged, and submitted instantly.</div>
+                  <div className="mt-2 text-sm font-medium text-[var(--color-ink)]">Instagram Case Submission</div>
+                  <div className="mt-1 text-xs text-[var(--color-muted)]">Instagram takedown cases are vetted, packaged, and submitted within hours.</div>
                 </div>
 
                 <div>
                   <div className="text-3xl font-bold text-[var(--color-ink)] sm:text-4xl">Zero</div>
                   <div className="mt-2 text-sm font-medium text-[var(--color-ink)]">Public Footprint</div>
-                  <div className="mt-1 text-xs text-[var(--color-muted)]">Everything remains end-to-end encrypted and anonymous.</div>
+                  <div className="mt-1 text-xs text-[var(--color-muted)]">Your Instagram takedown case remains end-to-end encrypted and anonymous.</div>
                 </div>
               </div>
             </div>

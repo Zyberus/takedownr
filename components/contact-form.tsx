@@ -3,9 +3,10 @@
 import { motion } from "framer-motion";
 
 const issueTypes = [
-  "Non-consensual content",
-  "Impersonation account",
-  "Evidence review",
+  "Non-consensual Instagram content",
+  "Instagram impersonation account",
+  "Old Instagram account deletion",
+  "Instagram evidence review",
 ];
 
 const fadeUp = {

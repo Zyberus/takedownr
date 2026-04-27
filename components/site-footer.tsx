@@ -10,10 +10,10 @@ export function SiteFooter() {
         <div className="flex max-w-xs flex-col gap-4">
           <Link href="/" className="brand-mark md:text-xl">
             <span className="brand-mark-dot" />
-            Takedownrr
+            Takedownr
           </Link>
           <p className="text-sm leading-relaxed text-[var(--color-muted)]">
-            Professional confidential takedown requests, unauthorized content removal, and impersonation account reporting.
+            Professional Instagram takedown service. Report fake accounts, remove unauthorized photos & reels, delete impersonation profiles. Confidential, fast, full refund guarantee.
           </p>
         </div>
 
@@ -53,7 +53,7 @@ export function SiteFooter() {
       <div className="mx-auto mt-12 max-w-6xl border-t border-[var(--color-line)] pt-8 md:mt-16">
         <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
           <p className="text-xs text-[var(--color-muted)]">
-            &copy; {currentYear} Takedownrr. All rights reserved.
+            &copy; {currentYear} Takedownr. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
             <span className="inline-flex items-center gap-1.5 text-xs text-[var(--color-muted)]">
