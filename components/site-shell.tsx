@@ -10,6 +10,7 @@ import {
   useMotionValueEvent,
 } from "framer-motion";
 import { ArrowUpRight, Lock, Menu, X } from "lucide-react";
+import { SiteFooter } from "@/components/site-footer";
 
 const navigation = [
   { href: "/", label: "Home" },
@@ -218,7 +219,10 @@ export function SiteShell({
         )}
       </AnimatePresence>
 
-      <main className="page-enter flex min-h-[calc(100vh-5.25rem)] flex-col">{children}</main>
+      <main className="page-enter flex min-h-[calc(100vh-5.25rem)] flex-col">
+        {children}
+        <SiteFooter />
+      </main>
     </div>
   );
 }

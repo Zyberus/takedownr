@@ -2,6 +2,7 @@
 
 import { ContactForm } from "@/components/contact-form";
 import { SiteShell } from "@/components/site-shell";
+import { InteractiveEmailLink } from "@/components/interactive-email-link";
 import {
   BadgeCheck,
   Image,
@@ -67,10 +68,11 @@ export default function ContactPage() {
               Open a private, confidential takedown request.
             </motion.h1>
 
-            <motion.p variants={fadeUp} className="contact-hero-desc">
+            <motion.div variants={fadeUp} className="contact-hero-desc">
               Send the essentials once. Your case begins immediately — calm process, focused
-              pressure where it counts.
-            </motion.p>
+              pressure where it counts. Alternatively, you can email us directly at{" "}
+              <InteractiveEmailLink />.
+            </motion.div>
 
             <motion.div variants={fadeUp} className="contact-checklist">
               {checklistItems.map((item, index) => (

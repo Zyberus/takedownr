@@ -1,258 +1,113 @@
 "use client";
 
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
-import {
-  Shield,
-  ArrowRight,
-  Check,
-  Link2,
-  Image as ImageIcon,
-  ShieldCheck,
-  Sparkles,
-} from "lucide-react";
-
-const ease = [0.22, 1, 0.36, 1] as const;
-
-const cases = [
-  { id: "TR-2847", platform: "Instagram", type: "Reel",  duration: "2d 14h" },
-  { id: "TR-2851", platform: "Instagram", type: "Photo", duration: "1d 06h" },
-  { id: "TR-2856", platform: "Instagram", type: "Story", duration: "3d 02h" },
-] as const;
-
-const evidence = [
-  { Icon: Link2,        label: "URL captured",       detail: "instagram.com/p/Cx9\u2026" },
-  { Icon: ImageIcon,    label: "Screenshot sealed",  detail: "evidence_01.png" },
-  { Icon: ShieldCheck,  label: "Identity verified",  detail: "KYC \u00b7 encrypted" },
-] as const;
-
-const stages = ["Filed", "Review", "Sent", "Removed"] as const;
-
-const stagger = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
-};
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease } },
-};
+import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 
 export function AnimatedHero() {
-  // phase: 0 -> Filed, 1 -> Review, 2 -> Sent, 3 -> Removed
-  const [phase, setPhase] = useState(0);
-  const [caseIdx, setCaseIdx] = useState(0);
+  const ease = [0.22, 1, 0.36, 1];
+  
+  const stagger = {
+    hidden: {},
+    visible: {
+      transition: { staggerChildren: 0.1 }
+    }
+  };
 
-  useEffect(() => {
-    const t = setInterval(() => {
-      setPhase((p) => {
-        if (p >= 3) {
-          setCaseIdx((c) => (c + 1) % cases.length);
-          return 0;
-        }
-        return p + 1;
-      });
-    }, 1500);
-    return () => clearInterval(t);
-  }, []);
-
-  const current = cases[caseIdx];
-  const removed = phase >= 3;
+  const fadeUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease } }
+  };
 
   return (
-    <section className="compact-hero">
-      {/* Ambient glow */}
-      <motion.div
-        className="compact-hero-glow"
-        aria-hidden="true"
-        animate={{ opacity: [0.3, 0.6, 0.3], scale: [1, 1.1, 1] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-      />
-
-      <div className="compact-hero-inner">
-        {/* Left: text */}
-        <motion.div
-          className="compact-hero-text"
-          variants={stagger}
-          initial="hidden"
-          animate="visible"
-        >
-          <motion.div className="compact-hero-badge" variants={fadeUp}>
-            <Shield size={14} />
-            <span>Instagram Takedown Studio</span>
-          </motion.div>
-
-          <motion.h1 className="compact-hero-title" variants={fadeUp}>
-            Stolen content?
-            <br />
-            <span className="compact-hero-accent">We get it removed.</span>
-          </motion.h1>
-
-          <motion.p className="compact-hero-desc" variants={fadeUp}>
-            Turn scattered evidence into a single decisive takedown — organized,
-            private, and built to move fast.
-          </motion.p>
-
-          <motion.div className="compact-hero-ctas" variants={fadeUp}>
-            <Link href="/contact" className="button-primary compact-hero-btn">
-              Start your case
-              <ArrowRight size={16} />
-            </Link>
-            <Link href="#services" className="button-secondary">
-              See services
-            </Link>
-          </motion.div>
-
-          <motion.div className="compact-hero-stats" variants={fadeUp}>
-            <div className="compact-stat">
-              <strong>24h</strong>
-              <span>Intake review</span>
-            </div>
-            <div className="compact-stat-divider" />
-            <div className="compact-stat">
-              <strong>100%</strong>
-              <span>Human reviewed</span>
-            </div>
-            <div className="compact-stat-divider" />
-            <div className="compact-stat">
-              <strong>2</strong>
-              <span>Pathways</span>
-            </div>
-          </motion.div>
-        </motion.div>
-
-        {/* Right: Living Case File visualization */}
-        <motion.div
-          className="compact-hero-viz"
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2, ease }}
-        >
-          {/* Stack of past case papers behind the active card */}
-          <div className="case-stack" aria-hidden="true">
-            <div className="case-paper case-paper-back" />
-            <div className="case-paper case-paper-mid" />
-          </div>
-
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={caseIdx}
-              className="case-card"
-              initial={{ opacity: 0, y: 14, scale: 0.985 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -10, scale: 0.985 }}
-              transition={{ duration: 0.55, ease }}
-            >
-              <div className="case-card-header">
-                <div className="case-id-row">
-                  <span className="case-tag">Case</span>
-                  <span className="case-id">#{current.id}</span>
-                </div>
-                <span
-                  className={`case-status ${removed ? "case-status-done" : "case-status-live"}`}
-                >
-                  <span className="case-status-dot" />
-                  {removed ? "Removed" : "In progress"}
-                </span>
+    <section className="relative overflow-hidden bg-[var(--color-surface)] pt-12 pb-16 md:pt-16 lg:pt-20 lg:pb-32">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-8 lg:items-center">
+          
+          {/* Left Column - Main Copy */}
+          <motion.div 
+            className="lg:col-span-7 flex flex-col items-start"
+            initial="hidden"
+            animate="visible"
+            variants={stagger}
+          >
+            <motion.div variants={fadeUp} className="mb-6 flex items-center gap-3">
+              <div className="relative flex h-2.5 w-2.5 items-center justify-center">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--color-accent)] opacity-40"></span>
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]"></span>
               </div>
-
-              <div className="case-meta">
-                <div className="case-meta-cell">
-                  <span>Target</span>
-                  <strong>{current.platform} · {current.type}</strong>
-                </div>
-                <div className="case-meta-cell">
-                  <span>Pathway</span>
-                  <strong>Priority · 24h</strong>
-                </div>
-              </div>
-
-              {/* Evidence list — checks light up as phase advances */}
-              <div className="case-section">
-                <div className="case-section-label">
-                  <Sparkles size={11} strokeWidth={2} />
-                  Evidence
-                </div>
-                <ul className="case-evidence">
-                  {evidence.map((e, i) => {
-                    const visible = phase >= i;
-                    const Icon = e.Icon;
-                    return (
-                      <li key={e.label} className="case-evidence-row">
-                        <span className="case-evidence-icon">
-                          <Icon size={12} strokeWidth={1.9} />
-                        </span>
-                        <div className="case-evidence-text">
-                          <strong>{e.label}</strong>
-                          <span>{e.detail}</span>
-                        </div>
-                        <motion.span
-                          className="case-evidence-check"
-                          animate={{
-                            scale: visible ? 1 : 0,
-                            opacity: visible ? 1 : 0,
-                          }}
-                          transition={{
-                            duration: 0.32,
-                            delay: visible ? 0.12 : 0,
-                            ease,
-                          }}
-                          aria-hidden="true"
-                        >
-                          <Check size={11} strokeWidth={2.6} />
-                        </motion.span>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-
-              {/* Timeline progress */}
-              <div className="case-section">
-                <div className="case-section-label">Timeline</div>
-                <div className="case-timeline">
-                  <div className="case-timeline-track">
-                    <motion.div
-                      className="case-timeline-fill"
-                      animate={{ width: `${(Math.min(phase, 3) / 3) * 100}%` }}
-                      transition={{ duration: 0.7, ease }}
-                    />
-                  </div>
-                  <div className="case-timeline-stages">
-                    {stages.map((s, i) => (
-                      <div
-                        key={s}
-                        className={`case-stage ${i <= phase ? "case-stage-done" : ""}`}
-                      >
-                        <span className="case-stage-dot" />
-                        <span className="case-stage-label">{s}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Removed stamp */}
-              <AnimatePresence>
-                {removed && (
-                  <motion.div
-                    key="stamp"
-                    className="case-stamp"
-                    initial={{ opacity: 0, scale: 0.55, rotate: -14 }}
-                    animate={{ opacity: 1, scale: 1, rotate: -6 }}
-                    exit={{ opacity: 0, scale: 0.7 }}
-                    transition={{ duration: 0.55, ease }}
-                    aria-hidden="true"
-                  >
-                    <span className="case-stamp-label">Removed</span>
-                    <span className="case-stamp-meta">in {current.duration}</span>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              <span className="text-xs font-semibold uppercase tracking-widest text-[var(--color-muted)]">
+                Intake Open &middot; 24h Response
+              </span>
             </motion.div>
-          </AnimatePresence>
-        </motion.div>
+            
+            <motion.h1 
+              variants={fadeUp}
+              className="text-4xl font-bold tracking-tight text-[var(--color-ink)] sm:text-5xl lg:text-7xl lg:leading-[1.05]"
+            >
+              Take back control of <br className="hidden sm:block" /> 
+              <span className="text-[var(--color-muted)]">your image.</span>
+            </motion.h1>
+            
+            <motion.p 
+              variants={fadeUp}
+              className="mt-6 max-w-xl text-base leading-relaxed text-[var(--color-muted)] sm:text-lg"
+            >
+              Fast, confidential takedowns for unauthorized content and impersonation accounts. We handle the heavy lifting quietly, methodically, and effectively.
+            </motion.p>
+            
+            <motion.div variants={fadeUp} className="mt-8 flex flex-wrap items-center gap-4 sm:gap-6">
+              <Link href="/contact" className="button-primary">
+                Start a request <ArrowUpRight size={18} strokeWidth={2} />
+              </Link>
+              <span className="text-sm font-medium text-[var(--color-ink)]">
+                Results guaranteed or 100% refund.
+              </span>
+            </motion.div>
+          </motion.div>
+
+          {/* Right Column - Minimal Editorial Graphic */}
+          <motion.div 
+            className="lg:col-span-4 lg:col-start-9"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.3, ease }}
+          >
+            <div className="relative border-l border-[var(--color-line)] bg-gradient-to-r from-[var(--color-line)] to-transparent pl-8 py-6 opacity-80 mix-blend-multiply">
+              {/* Animated subtle trace line */}
+              <motion.div 
+                className="absolute -left-[1px] top-0 w-[2px] bg-[var(--color-ink)]"
+                initial={{ height: "0%", top: "0%" }}
+                animate={{ 
+                  height: ["0%", "30%", "0%"],
+                  top: ["0%", "70%", "100%"]
+                }}
+                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+              />
+
+              <div className="flex flex-col gap-12">
+                <div>
+                  <div className="text-3xl font-bold text-[var(--color-ink)] sm:text-4xl">98%</div>
+                  <div className="mt-2 text-sm font-medium text-[var(--color-ink)]">Platform Success Rate</div>
+                  <div className="mt-1 text-xs text-[var(--color-muted)]">On all accepted clear-cut policy violations.</div>
+                </div>
+                
+                <div>
+                  <div className="text-3xl font-bold text-[var(--color-ink)] sm:text-4xl">&lt; 24h</div>
+                  <div className="mt-2 text-sm font-medium text-[var(--color-ink)]">Initial Escalation</div>
+                  <div className="mt-1 text-xs text-[var(--color-muted)]">Cases are vetted, packaged, and submitted instantly.</div>
+                </div>
+
+                <div>
+                  <div className="text-3xl font-bold text-[var(--color-ink)] sm:text-4xl">Zero</div>
+                  <div className="mt-2 text-sm font-medium text-[var(--color-ink)]">Public Footprint</div>
+                  <div className="mt-1 text-xs text-[var(--color-muted)]">Everything remains end-to-end encrypted and anonymous.</div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+          
+        </div>
       </div>
     </section>
   );
