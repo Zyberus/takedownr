@@ -13,7 +13,6 @@ import { ArrowUpRight, Lock, Menu, X } from "lucide-react";
 import { SiteFooter } from "@/components/site-footer";
 
 const navigation = [
-  { href: "/", label: "Home" },
   { href: "/how-it-works", label: "How It Works" },
   { href: "/pricing", label: "Plans" },
   { href: "/contact", label: "Contact" },

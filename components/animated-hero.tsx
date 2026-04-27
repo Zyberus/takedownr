@@ -43,10 +43,10 @@ export function AnimatedHero() {
             
             <motion.h1 
               variants={fadeUp}
-              className="text-4xl font-bold tracking-tight text-[var(--color-ink)] sm:text-5xl lg:text-7xl lg:leading-[1.05]"
+              className="font-serif text-5xl font-medium tracking-tight text-[var(--color-ink)] sm:text-6xl lg:text-7xl lg:leading-[1.05]"
             >
               Take back control of <br className="hidden sm:block" /> 
-              <span className="text-[var(--color-muted)]">your image.</span>
+              <span className="text-[var(--color-muted)] italic">your image.</span>
             </motion.h1>
             
             <motion.p 
