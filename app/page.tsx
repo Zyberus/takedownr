@@ -1,65 +1,116 @@
-import Image from "next/image";
+import Link from "next/link";
+import { SiteShell } from "@/components/site-shell";
+import { AnimatedHero } from "@/components/animated-hero";
+
+const serviceCards = [
+  {
+    title: "Reel and photo takedowns",
+    copy:
+      "For videos or images uploaded without consent, we help assemble the fastest, most credible removal request possible.",
+  },
+  {
+    title: "Impersonator account removal",
+    copy:
+      "When someone is pretending to be you, we build a clean identity-and-harm packet designed to support account deletion action.",
+  },
+  {
+    title: "Rapid escalation prep",
+    copy:
+      "If a case is urgent, we focus the documentation so it is easier to escalate without losing critical details.",
+  },
+];
+
+const steps = [
+  {
+    index: "01",
+    title: "Send the evidence once",
+    copy:
+      "We structure links, screenshots, account details, and harm context into a clean case file built for fast review.",
+  },
+  {
+    index: "02",
+    title: "We pressure the right pathway",
+    copy:
+      "Each request is routed toward either unauthorized-content removal or impersonation-account enforcement.",
+  },
+  {
+    index: "03",
+    title: "Track the case without chaos",
+    copy:
+      "You get a clear next step, not a maze of tabs, DMs, and repeated explanations.",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <SiteShell ctaHref="/contact" ctaLabel="Open a Case">
+      <AnimatedHero />
+
+      <section id="services" className="editorial-section">
+        <div className="section-heading reveal">
+          <p className="eyebrow">Services</p>
+          <h2 className="section-title">Minimal process. Heavy pressure where it counts.</h2>
+          <p className="section-copy">
+            Built for two of the most stressful Instagram problems: content posted without consent and impersonation accounts designed to deceive.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="service-grid">
+          {serviceCards.map((card, index) => (
+            <article
+              key={card.title}
+              className={`service-card reveal reveal-delay-${(index % 3) + 1}`}
+            >
+              <span className="service-index">0{index + 1}</span>
+              <h3>{card.title}</h3>
+              <p>{card.copy}</p>
+            </article>
+          ))}
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section className="story-section">
+        <div className="story-layout">
+          <div className="story-panel reveal">
+            <p className="eyebrow">Scroll flow</p>
+            <h2 className="section-title">A case journey that feels clear even when the situation doesn&apos;t.</h2>
+            <p className="section-copy">
+              The site is designed to slow the panic down: a composed interface, clear sequencing, and visible momentum from intake to escalation.
+            </p>
+          </div>
+
+          <div className="steps-stack">
+            {steps.map((step, index) => (
+              <article
+                key={step.index}
+                className={`step-card reveal reveal-delay-${(index % 3) + 1}`}
+              >
+                <span>{step.index}</span>
+                <h3>{step.title}</h3>
+                <p>{step.copy}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="cta-section">
+        <div className="cta-panel reveal">
+          <p className="eyebrow">Ready</p>
+          <h2 className="section-title">If someone posted it without consent or is impersonating you, start the case now.</h2>
+          <p className="section-copy">
+            Private intake, organized evidence, and a focused takedown path from the first message.
+          </p>
+          <div className="hero-actions">
+            <Link href="/contact" className="button-primary">
+              Start a takedown request
+            </Link>
+            <Link href="/how-it-works" className="button-secondary">
+              See how it works
+            </Link>
+          </div>
+        </div>
+      </section>
+    </SiteShell>
   );
 }
