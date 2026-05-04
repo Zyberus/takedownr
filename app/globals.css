@@ -3994,6 +3994,31 @@ textarea {
 
 /* FAQ */
 
+.pv3-eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 0.75rem;
+}
+
+.pv3-faq-title {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+
+.pv3-faq-sub {
+  font-size: 1rem;
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+
 .pv3-faq-grid {
   margin-top: 5rem;
   display: grid;

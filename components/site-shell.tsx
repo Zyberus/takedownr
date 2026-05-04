@@ -16,6 +16,7 @@ import { SiteFooter } from "@/components/site-footer";
 const navigation = [
   { href: "/how-it-works", label: "How It Works" },
   { href: "/pricing", label: "Plans" },
+  { href: "/track", label: "Track Case" },
   { href: "/contact", label: "Contact" },
 ];
 

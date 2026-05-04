@@ -309,16 +309,13 @@ export function PricingClient({ initialPricing }: PricingClientProps) {
                   <div key={idx} className="pv3-faq-item" data-open={open}>
                     <button
                       type="button"
-                      className="pv3-faq-question"
+                      className="pv3-faq-trigger"
                       onClick={() => setOpenFaq(open ? null : idx)}
                     >
                       <span>{faq.q}</span>
-                      <motion.div
-                        animate={{ rotate: open ? 45 : 0 }}
-                        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                      >
-                        <Plus size={18} strokeWidth={1.5} />
-                      </motion.div>
+                      <span className="pv3-faq-icon">
+                        <Plus size={14} strokeWidth={1.5} />
+                      </span>
                     </button>
                     <AnimatePresence initial={false}>
                       {open && (
@@ -329,7 +326,7 @@ export function PricingClient({ initialPricing }: PricingClientProps) {
                           transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                           className="overflow-hidden"
                         >
-                          <div className="pv3-faq-answer">{faq.a}</div>
+                          <div className="pv3-faq-body">{faq.a}</div>
                         </motion.div>
                       )}
                     </AnimatePresence>

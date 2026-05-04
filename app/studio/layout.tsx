@@ -10,6 +10,7 @@ import {
   WalletCards,
   LogOut,
   ShieldCheck,
+  Package,
 } from "lucide-react";
 import { signOut } from "firebase/auth";
 import { firebaseAuth } from "@/lib/firebase-client";
@@ -17,6 +18,7 @@ import { firebaseAuth } from "@/lib/firebase-client";
 const navItems = [
   { href: "/studio/overview", label: "Overview", icon: LayoutDashboard },
   { href: "/studio/requests", label: "Requests", icon: Inbox },
+  { href: "/studio/tracking", label: "Tracking", icon: Package },
   { href: "/studio/health", label: "API Health", icon: Server },
   { href: "/studio/pricing", label: "Pricing", icon: WalletCards },
 ];
