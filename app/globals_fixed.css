@@ -1069,7 +1069,20 @@ textarea {
   background: rgba(255, 214, 153, 0.28);
 }
 
+.eyebrow::before {
+  content: "";
+  position: absolute;
+  left: -0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--color-accent), transparent);
+  border-radius: 2px;
+}
+
 .eyebrow {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
@@ -1079,13 +1092,6 @@ textarea {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--color-subtle);
-}
-
-.eyebrow::before {
-  content: "";
-  height: 1px;
-  width: 2rem;
-  background: rgba(24, 20, 17, 0.16);
 }
 
 .hero-title,
@@ -1736,20 +1742,9 @@ textarea {
 
 .feature-list li {
   position: relative;
-  padding-left: 1.3rem;
+  padding-left: 1.25rem;
   color: var(--color-muted);
   line-height: 1.7;
-}
-
-.feature-list li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.7rem;
-  height: 0.4rem;
-  width: 0.4rem;
-  border-radius: 999px;
-  background: var(--color-accent);
 }
 
 .feature-list-compact {

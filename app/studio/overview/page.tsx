@@ -10,9 +10,10 @@ import {
   limit,
 } from "firebase/firestore";
 import { motion, AnimatePresence } from "framer-motion";
-import { Inbox, Sparkles, CheckCircle2, TrendingUp, Server, WalletCards, ArrowRight } from "lucide-react";
+import { Inbox, Sparkles, CheckCircle2, TrendingUp, Server, WalletCards, ArrowRight, PieChart, Activity, BarChart3 } from "lucide-react";
 import { firebaseAuth, firestore } from "@/lib/firebase-client";
 import Link from "next/link";
+import { PieChart as RechartsPieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend, LineChart, Line, XAxis, YAxis, CartesianGrid, Area, AreaChart, BarChart, Bar } from "recharts";
 
 type ContactRequest = {
   id: string;
@@ -75,7 +76,41 @@ export default function OverviewPage() {
     ];
   }, [contacts]);
 
+  // Data for pie chart
+  const pieData = useMemo(() => [
+    { name: "Needs Review", value: stats[1].value, color: "#f59e0b" },
+    { name: "Reviewed", value: stats[2].value, color: "#10b981" },
+    { name: "Closed", value: stats[3].value, color: "#6b7280" },
+  ], [stats]);
+
+  // Data for line chart (requests over time - last 7 days)
+  const lineData = useMemo(() => {
+    const last7Days = Array.from({ length: 7 }, (_, i) => {
+      const date = new Date();
+      date.setDate(date.getDate() - (6 - i));
+      return date.toISOString().split('T')[0];
+    });
+
+    return last7Days.map(date => {
+      const count = contacts.filter(item => {
+        if (!item.createdAt) return false;
+        const itemDate = item.createdAt.toDate().toISOString().split('T')[0];
+        return itemDate === date;
+      }).length;
+      return { date, requests: count };
+    });
+  }, [contacts]);
+
+  // Data for bar chart
+  const barData = useMemo(() => [
+    { name: "New", value: stats[1].value, color: "#f59e0b" },
+    { name: "Reviewed", value: stats[2].value, color: "#10b981" },
+    { name: "Closed", value: stats[3].value, color: "#6b7280" },
+  ], [stats]);
+
   const recentRequests = contacts.slice(0, 5);
+
+  const maxStat = Math.max(...stats.map(s => s.value), 1);
 
   const colorClasses = {
     blue: "bg-blue-500/10 text-blue-600 ring-1 ring-blue-500/20",
@@ -94,7 +129,7 @@ export default function OverviewPage() {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 15 },
-    show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 24 } }
+    show: { opacity: 1, y: 0, transition: { type: "spring" as const, stiffness: 300, damping: 24 } }
   };
 
   if (!authReady) {
@@ -104,9 +139,6 @@ export default function OverviewPage() {
       </div>
     );
   }
-
-  // Calculate percentages for simple horizontal progress bar chart
-  const maxStat = Math.max(...stats.map(s => s.value), 1);
 
   return (
     <motion.div 
@@ -158,6 +190,96 @@ export default function OverviewPage() {
             </div>
           </motion.div>
         ))}
+      </div>
+
+      <div className="grid lg:grid-cols-3 gap-6 mb-8">
+        <motion.div variants={itemVariants} className="border border-zinc-200 rounded-2xl bg-white p-6 shadow-sm">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
+              <PieChart size={18} className="text-blue-600" />
+            </div>
+            <h2 className="text-lg font-semibold text-zinc-900">Status Distribution</h2>
+          </div>
+          <div className="h-48">
+            <ResponsiveContainer width="100%" height="100%">
+              <RechartsPieChart>
+                <Pie
+                  data={pieData}
+                  cx="50%"
+                  cy="50%"
+                  innerRadius={40}
+                  outerRadius={60}
+                  paddingAngle={5}
+                  dataKey="value"
+                >
+                  {pieData.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={entry.color} />
+                  ))}
+                </Pie>
+                <Tooltip />
+                <Legend />
+              </RechartsPieChart>
+            </ResponsiveContainer>
+          </div>
+        </motion.div>
+
+        <motion.div variants={itemVariants} className="border border-zinc-200 rounded-2xl bg-white p-6 shadow-sm">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
+              <Activity size={18} className="text-emerald-600" />
+            </div>
+            <h2 className="text-lg font-semibold text-zinc-900">Requests (7 Days)</h2>
+          </div>
+          <div className="h-48">
+            <ResponsiveContainer width="100%" height="100%">
+              <AreaChart data={lineData}>
+                <defs>
+                  <linearGradient id="colorGradient" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.8}/>
+                    <stop offset="95%" stopColor="#3b82f6" stopOpacity={0.1}/>
+                  </linearGradient>
+                </defs>
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e4e4e7" />
+                <XAxis 
+                  dataKey="date" 
+                  tick={{ fontSize: 12 }}
+                  stroke="#71717a"
+                  tickFormatter={(value) => {
+                    const date = new Date(value);
+                    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                  }}
+                />
+                <YAxis tick={{ fontSize: 12 }} stroke="#71717a" />
+                <Tooltip />
+                <Area type="monotone" dataKey="requests" stroke="#3b82f6" strokeWidth={2} fillOpacity={1} fill="url(#colorGradient)" />
+              </AreaChart>
+            </ResponsiveContainer>
+          </div>
+        </motion.div>
+
+        <motion.div variants={itemVariants} className="border border-zinc-200 rounded-2xl bg-white p-6 shadow-sm">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center">
+              <BarChart3 size={18} className="text-amber-600" />
+            </div>
+            <h2 className="text-lg font-semibold text-zinc-900">Status Comparison</h2>
+          </div>
+          <div className="h-48">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={barData}>
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e4e4e7" />
+                <XAxis dataKey="name" tick={{ fontSize: 12 }} stroke="#71717a" />
+                <YAxis tick={{ fontSize: 12 }} stroke="#71717a" />
+                <Tooltip />
+                <Bar dataKey="value" radius={[8, 8, 0, 0]}>
+                  {barData.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={entry.color} />
+                  ))}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </motion.div>
       </div>
 
       <div className="grid lg:grid-cols-[2fr_1fr] gap-6">
