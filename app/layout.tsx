@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { AiChatSidebar } from "@/components/ai-chat-sidebar";
 import "./globals.css";
+import "./chat-styles.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://takedownr.com"),
@@ -242,8 +244,9 @@ export default function RootLayout({
         />
         <link rel="canonical" href="https://takedownr.com" />
       </head>
-      <body className="min-h-full bg-[var(--color-surface)] text-[var(--color-ink)] antialiased">
+      <body className="min-h-full bg-background text-foreground antialiased">
         {children}
+        <AiChatSidebar />
       </body>
     </html>
   );
